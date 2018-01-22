@@ -1,0 +1,7 @@
+spring:
+    thymeleaf:
+        #关闭Thymeleaf缓存，开发时配置
+        cache: false
+        #设置模板模式为html,默认为html5
+        mode: HTML
+        
