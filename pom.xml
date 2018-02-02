@@ -28,7 +28,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
+		<thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
+		<thymeleaf-extras-springsecurity4.version>3.0.2.RELEASE</thymeleaf-extras-springsecurity4.version>
 		<thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
 	</properties>
 
@@ -44,10 +45,18 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<!-- 添加Thymeleaf支持，Spring Boot也将自动配置 -->  
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+        </dependency>
 		<dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

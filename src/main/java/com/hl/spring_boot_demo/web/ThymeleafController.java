@@ -11,7 +11,7 @@ import com.hl.spring_boot_demo.domain.Person;
 public class ThymeleafController {
 
 	
-	@RequestMapping("/")
+	@RequestMapping("/thymeleaf")
 	public String toIndex(Model model) {
 		Person p1 = new Person("aa",11);
 		Person p2 = new Person("bb",22);

@@ -1,5 +1,7 @@
 package com.hl.spring_boot_demo.dao;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.hl.spring_boot_demo.domain.SysUser;
 
 public interface SysUserMapper {
@@ -14,4 +16,6 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    SysUser selectByUsername(String username);
 }

@@ -1,17 +1,11 @@
 spring:
+  profiles:
+    include: jdbc
   thymeleaf:
     #关闭Thymeleaf缓存，开发时配置
     cache: false
     #设置模板模式为html,默认为html5
     mode: HTML
-  datasource:
-    dirver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/spring_boot_demo?useUnicode=true&characterEncoding=utf8&useSSL=false
-    username: root
-    password: 123456  
-    druid:
-      initial-size: 3
-      max-active: 10
 mybatis: 
   mapper-locations: classpath:com/hl/spring_boot_demo/domain/mapping/*.xml
   type-aliases-package: com.hl.spring_boot_demo.domain
@@ -22,5 +16,5 @@ mybatis:
 logging:
   file: ./logs/spring_boot_demo.log
   level:
-    com.hl.spring_boot_demo.dao: DEBUG
+    com.hl.spring_boot_demo.dao: INFO
     

@@ -3,12 +3,27 @@
 <mapper namespace="com.hl.spring_boot_demo.dao.SysUserMapper">
   <resultMap id="BaseResultMap" type="com.hl.spring_boot_demo.domain.SysUser">
     <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <association
+    property="role" 
+    javaType="com.hl.spring_boot_demo.domain.SysRole"
+    select="com.hl.spring_boot_demo.dao.SysRoleMapper.selectByPrimaryKey"
+    column="role_id">
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
-    user_id, username, password
+    user_id, role_id, username, password
   </sql>
+  <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+        *
+    from
+        tb_user
+    where 
+        username=#{username,jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -20,16 +35,19 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hl.spring_boot_demo.domain.SysUser">
-    insert into tb_user (user_id, username, password
-      )
-    values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
+    insert into tb_user (user_id, role_id, username, 
+      password)
+    values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hl.spring_boot_demo.domain.SysUser">
     insert into tb_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         user_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
       </if>
       <if test="username != null">
         username,
@@ -42,6 +60,9 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
@@ -53,6 +74,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hl.spring_boot_demo.domain.SysUser">
     update tb_user
     <set>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
@@ -64,7 +88,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hl.spring_boot_demo.domain.SysUser">
     update tb_user
-    set username = #{username,jdbcType=VARCHAR},
+    set role_id = #{roleId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
