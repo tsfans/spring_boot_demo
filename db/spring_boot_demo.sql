@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-02-02 10:01:08
+Date: 2018-02-05 17:50:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,7 @@ CREATE TABLE `tb_role` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) NOT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tb_user
@@ -35,4 +35,4 @@ CREATE TABLE `tb_user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
